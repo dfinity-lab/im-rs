@@ -16,12 +16,12 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
-      - uses: hecrj/setup-rust-action@v1
+      - uses: hecrj/setup-rust-action@50a120e4d34903c2c1383dec0e9b1d349a9cc2b1 # v1
         with:
           rust-version: ${{ matrix.rust }}
       - name: Install cargo tooling
         run: cargo install cargo-make cargo-script
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@50fbc622fc4ef5163becd7fab6573eac35f8462e # v1.2.0
       - name: Prepare distribution folders
         run: cargo make prepare-release
       - name: Run tests
@@ -33,10 +33,10 @@ jobs:
   clippy:
     runs-on: ubuntu-latest
     steps:
-      - uses: hecrj/setup-rust-action@v1
+      - uses: hecrj/setup-rust-action@50a120e4d34903c2c1383dec0e9b1d349a9cc2b1 # v1
         with:
           rust-version: stable
           components: clippy
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@50fbc622fc4ef5163becd7fab6573eac35f8462e # v1.2.0
       - name: Clippy
         run: cargo clippy -- -D warnings
